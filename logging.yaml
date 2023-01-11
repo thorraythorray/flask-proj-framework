@@ -1,0 +1,35 @@
+version: 1
+formatters:
+  brief:
+    format: '%(levelname)-8s  %(asctime)s: %(message)s'
+    datefmt: '%T'
+  verbose:
+    format: '%(levelname)-8s  %(asctime)s %(pathname)s:%(funcName)s(%(lineno)d): %(message)s'
+    datefmt: '%T'
+handlers:
+  brief_console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: brief
+    stream: ext://sys.stdout
+  verbose_console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: verbose
+    stream: ext://sys.stdout
+loggers:
+  app:
+    propagate: no
+  app.local:
+    handlers: [brief_console]
+    level: DEBUG
+  app.dev:
+    handlers: [verbose_console]
+    level: INFO
+  app.test:
+    handlers: [verbose_console]
+    level: WARNING
+  app.prod:
+    handlers: [verbose_console]
+    level: ERROR
+disable_existing_loggers: no
