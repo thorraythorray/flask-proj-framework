@@ -1,4 +1,17 @@
-{
+{"files.exclude": {
+    // "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/*.pyc": true,
+    "**/.DS_Store": true,
+    "**/.vscode": true,
+    "**/__pycache__": true,
+    "**/.empty": true
+    },
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+        "--rcfile=.pylintrc"
+    ],
+    "svn.ignoreMissingSvnWarning": true
 }
