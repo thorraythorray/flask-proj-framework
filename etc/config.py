@@ -8,7 +8,7 @@ from utils._compat import string_types, import_string
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-class Conf(dict):
+class AppConfig(dict):
     instance = None
 
     def __new__(cls, *args, **kwargs):
@@ -19,9 +19,8 @@ class Conf(dict):
     def __init__(self, defaults=None):
         dict.__init__(self, defaults or {})
         env_conf = dotenv_values(".env")
-        print(env_conf)
-        self.from_object(env_conf)
-        print(self.__dict__)
+        for k, v in env_conf.items():
+            self[k] = v
 
     def from_pyfile(self, filename, silent=False):
         """Updates the values in the config from a Python file.  This function
@@ -87,4 +86,4 @@ class Conf(dict):
                 self[key] = getattr(obj, key)
 
 
-conf = Conf()
+conf = AppConfig()

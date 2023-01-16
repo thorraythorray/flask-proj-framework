@@ -1,6 +1,9 @@
 from flask import jsonify, Blueprint
 
-bp = Blueprint("admin", __name__)
+from app.maicai import bp
+
+child = Blueprint("maicai_view", __name__)
+bp.register_blueprint(child, url_prefix="/api")
 
 
 @bp.route("/login", methods=["POST"])
