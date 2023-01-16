@@ -1,9 +1,9 @@
 from flask import Blueprint
 
-from app.maicai.views.admin import admin_bp
+from app.maicai.views import bp as bp1
 
 
 def create_bp():
     maicai = Blueprint("maicai", __name__)
-    bp = maicai.register_blueprint(admin_bp, url_prefix="/v1")
-    return bp
+    _bp = maicai.register_blueprint(bp1, url_prefix="/v1")
+    return _bp
