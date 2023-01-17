@@ -17,6 +17,7 @@ PROD_STATUS = (
 )
 
 class Product(BaseModel):
+    __abstract__ = False
     name = Column(VARCHAR(32), nullable=False)
     sell_price = Column(Float, nullable=False)
     orig_price = Column(Float, nullable=False)

@@ -4,8 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, DateTime
 from sqlalchemy.ext.declarative import declared_attr
 
-db = SQLAlchemy()
 
+db = SQLAlchemy()
 
 class BaseModelMixin:
 

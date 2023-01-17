@@ -1,13 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, MigrateCommand
 
 from etc.config import ENV_CONF, MYSQL_URI
 from app.maicai import bp as maicai_bp
+from app.db import db
 
-# __import__('app.maicai', fromlist=['Product'])
-# __import__('app.maicai.models', fromlist=['Product', 'Category', 'ProdImages'])
+__import__('app.maicai.models', fromlist=['Product', 'Category', 'ProdImages'])
 
 
 def register_blueprints(app):
@@ -19,10 +18,9 @@ def apply_cors(app):
 
 
 def apply_migrate(app):
-    db = SQLAlchemy()
     db.init_app(app)
     migrate = Migrate()
-    migrate.init_app(app, db=db)
+    migrate.init_app(app, db=db, command=MigrateCommand)
 
 
 def load_app_config(app):
