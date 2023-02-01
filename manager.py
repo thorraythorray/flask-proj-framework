@@ -1,5 +1,5 @@
-from flask_script import Manager, upgrade
-from flask_migrate import MigrateCommand
+from flask_script import Manager
+from flask_migrate import MigrateCommand, upgrade
 
 from app import create_app
 
@@ -14,3 +14,4 @@ def deploy():
 
 if __name__ == '__main__':
     manager.run()
+ 

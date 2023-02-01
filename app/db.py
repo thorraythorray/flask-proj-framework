@@ -10,7 +10,7 @@ db = SQLAlchemy()
 class BaseModelMixin:
 
     @declared_attr
-    def __tablename__(cls):
+    def __tablename__(cls):  # pylint: disable=no-self-argument
         return cls.__applabel__.lower() + "_" + cls.__name__.lower()
 
     id = Column(Integer, primary_key=True, autoincrement=True)

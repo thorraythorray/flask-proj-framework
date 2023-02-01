@@ -1,12 +1,7 @@
 # coding: utf-8
 from sqlalchemy import Column, Integer, VARCHAR, Text, Float
 
-from app.db import BaseModelMixin, db
-
-
-class BaseModel(db.Model, BaseModelMixin):
-    __applabel__ = 'maicai'
-    __abstract__ = True
+from app.maicai import BaseModel
 
 
 PROD_STATUS = (
@@ -17,7 +12,6 @@ PROD_STATUS = (
 )
 
 class Product(BaseModel):
-    __abstract__ = False
     name = Column(VARCHAR(32), nullable=False)
     sell_price = Column(Float, nullable=False)
     orig_price = Column(Float, nullable=False)
