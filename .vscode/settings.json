@@ -13,6 +13,7 @@
     "python.linting.pylintArgs": [
         "--rcfile=.pylintrc"
     ],
+    "yaml.schemaStore.enable": false,
     "python.linting.pylintPath": "D:\\Program Files\\miniconda\\envs\\pyfla\\Scripts\\pylint",
     "svn.ignoreMissingSvnWarning": true
 }
