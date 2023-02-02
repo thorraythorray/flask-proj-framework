@@ -1,10 +1,13 @@
 from flask import jsonify
+from flask import Blueprint
 
-from app.maicai import bp
+from utils.log import logger
 
-bp.register_blueprint("maicai_view", url_prefix="/api")
-
+bp = Blueprint("maicai", __name__, url_prefix='/v1/api')
+print(222)
 
 @bp.route("/test", methods=["GET"])
 def test():
+    print(333)
+    logger.info(987654)
     return jsonify('ok')
