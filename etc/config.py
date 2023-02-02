@@ -18,6 +18,7 @@ class EnvConf(dict):
             self[k] = v
 
 ENV_CONF = EnvConf()
+ENV = ENV_CONF.get("FLASK_ENV")
 
 MYSQL_URI = 'mysql+mysqldb://{}:{}@{}:{}/{}?charset=utf8mb4'.format(
     ENV_CONF["MYSQL_USER"], ENV_CONF["MYSQL_PASS"], ENV_CONF["MYSQL_HOST"],
