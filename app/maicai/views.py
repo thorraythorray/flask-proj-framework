@@ -3,7 +3,7 @@ from flask import Blueprint
 
 from utils.log import logger
 
-bp = Blueprint("maicai", __name__)
+bp = Blueprint("maicai", __name__, url_prefix="/api")
 
 @bp.route("/test", methods=["GET"])
 def test():
