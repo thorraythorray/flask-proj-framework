@@ -1,6 +1,7 @@
 from flask import Blueprint
 
 from app.db import BaseModelMixin, db
+from app.maicai.views import bp as api_bp
 
 
 class BaseModel(db.Model, BaseModelMixin):
@@ -8,14 +9,7 @@ class BaseModel(db.Model, BaseModelMixin):
     __abstract__ = True
 
 
-# def create_maicai_bp():
-#     maicai_bp = Blueprint("maicai", __name__, url_prefix='/maicai')
-#     from app.maicai.views import bp as api_bp
-#     maicai_bp.register_blueprint(api_bp)
-#     return maicai_bp
-
-
-bp = Blueprint("maicai", __name__, url_prefix='/maicai')
-
-# __import__('app.maicai.views', fromlist=['bp'])
-from app.maicai.views import *
+def create_maicai_bp():
+    maicai_bp = Blueprint("maicai", __name__)
+    maicai_bp.register_blueprint(api_bp, url_prefix="/maicai")
+    return maicai_bp

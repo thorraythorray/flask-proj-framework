@@ -3,14 +3,14 @@ from flask_cors import CORS
 from flask_migrate import Migrate, MigrateCommand
 
 from etc.config import ENV_CONF, MYSQL_URI
-from app.maicai import bp as maicai_bp
 from app.db import db
 
 __import__('app.maicai.models', fromlist=['Product', 'Category', 'ProdImages'])
 
 
 def register_blueprints(app):
-    app.register_blueprint(maicai_bp, url_prefix='/fla')
+    from app.maicai import create_maicai_bp
+    app.register_blueprint(create_maicai_bp(), url_prefix='/fla')
 
 
 def apply_cors(app):
