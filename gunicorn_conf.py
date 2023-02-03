@@ -24,7 +24,6 @@ daemon = False  # 启动后台进程（当supervisor管理进程时需要False)
 
 pidfile = '/run/pyfla.pid'
 chdir = str(pathlib.Path().resolve())
-print("chdir", chdir)
 loglevel = 'info'
 errorlog = '/var/log/gunicorn/error.log'
 accesslog = '/var/log/gunicorn/access.log'
