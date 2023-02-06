@@ -5,12 +5,15 @@ from flask_migrate import Migrate, MigrateCommand
 from etc.config import ENV_CONF, MYSQL_URI
 from app.db import db
 
-__import__('app.maicai.models', fromlist=['Product', 'Category', 'ProdImages'])
-
 
 def register_blueprints(app):
     from app.maicai import create_maicai_bp
     app.register_blueprint(create_maicai_bp(), url_prefix='/fla')
+
+
+def register_cli(app):
+    from commands.mock import mock_cli
+    app.cli.add_command(mock_cli)
 
 
 def apply_cors(app):
@@ -32,6 +35,7 @@ def create_app():
     app = Flask(__name__)
     load_app_config(app)
     register_blueprints(app)
+    register_cli(app)
     apply_migrate(app)
     apply_cors(app)
     return app
