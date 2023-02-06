@@ -11,11 +11,16 @@ class BaseModel(db.Model, BaseModelMixin):
 
 
 def create_maicai_bp():
-    maicai_bp = Blueprint("maicai", __name__)
-    # maicai.api.test   GET      /fla/maicai/test
-    maicai_bp.register_blueprint(api_bp, url_prefix="/maicai")
-    # maicai.test.test  GET      /fla/test/test
+    '''
+    maicai.api.test   GET      /fla/maicai/test
+    maicai.test.test  GET      /fla/test/test
+    '''
+    maicai_bp = Blueprint("mc", __name__)
+    maicai_bp.register_blueprint(api_bp, url_prefix="/api")
     maicai_bp.register_blueprint(test_bp, url_prefix="/test")
+
+    from app.maicai.cli import bp as cli_bp
+    maicai_bp.register_blueprint(cli_bp)
     return maicai_bp
 
 

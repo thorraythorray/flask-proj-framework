@@ -35,7 +35,7 @@ def create_app():
     app = Flask(__name__)
     load_app_config(app)
     register_blueprints(app)
-    register_cli(app)
+    # register_cli(app)
     apply_migrate(app)
     apply_cors(app)
     return app
