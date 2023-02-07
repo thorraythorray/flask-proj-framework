@@ -16,7 +16,7 @@ class Category(BaseModel):
     name = Column(VARCHAR(32), nullable=False)
     img_url = Column(VARCHAR(255))
     desc = Column(Text)
-    products = relationship("Product", backref="cate")
+    products = relationship("Product", backref="cate", cascade="delete")
 
 
 class Product(BaseModel):
@@ -27,7 +27,7 @@ class Product(BaseModel):
     stock = Column(Integer, nullable=False, default=0)
     status = Column(Integer, default=0)
     desc = Column(Text)
-    images = relationship("ProdImages", backref="prod")
+    images = relationship("ProdImages", backref="prod", cascade="delete")
 
 
 class ProdImages(BaseModel):

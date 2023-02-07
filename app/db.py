@@ -16,7 +16,7 @@ class BaseModel(db.Model):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     created = Column(DateTime, nullable=False, default=datetime.now)
-    updated = Column(DateTime, nullable=False, onupdate=datetime.now)
+    updated = Column(DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     @classmethod
     def create(cls, **kwargs):
