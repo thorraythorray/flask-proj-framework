@@ -6,16 +6,16 @@ from flask import Blueprint
 from app.db import db
 from app.maicai import models as m
 
+cli_bp = Blueprint("cli", __name__, cli_group="maicai")
 
-bp = Blueprint("maicai", __name__)
 
-@bp.cli.command("test")
+@cli_bp.cli.command("test")
 @click.argument('name')
 def test_cli(name):
     print(name)
 
 
-@bp.cli.command("mock")
+@cli_bp.cli.command("mock")
 def mock_init_data():
     mock_data = {
         "cates": [

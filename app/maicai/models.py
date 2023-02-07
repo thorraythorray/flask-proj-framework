@@ -1,7 +1,12 @@
 # coding: utf-8
 from sqlalchemy import Column, Integer, VARCHAR, Text, Float, Boolean
 
-from app.maicai import BaseModel
+from app.db import BaseModelMixin, db
+
+
+class BaseModel(db.Model, BaseModelMixin):
+    __applabel__ = 'maicai'
+    __abstract__ = True
 
 
 PROD_STATUS = (
@@ -10,7 +15,6 @@ PROD_STATUS = (
     (2, '下架'),
     (3, '促销'),
 )
-
 
 class Category(BaseModel):
     name = Column(VARCHAR(32), nullable=False)
