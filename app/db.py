@@ -1,11 +1,8 @@
 from datetime import datetime
 
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, DateTime, create_engine
+from sqlalchemy import Column, Integer, DateTime
 from sqlalchemy.ext.declarative import declared_attr
-from sqlalchemy.orm import sessionmaker, scoped_session
-
-from etc.globals import MYSQL_URI
 
 db = SQLAlchemy()
 
@@ -27,13 +24,3 @@ class BaseModelMixin:
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
-
-def get_mysql_session():
-    db_engine = create_engine(
-        MYSQL_URI,
-        pool_recycle=3600, pool_size=3000,
-        isolation_level="READ COMMITTED"
-    )
-    db_session = scoped_session(sessionmaker(db_engine))
-    return db_session()

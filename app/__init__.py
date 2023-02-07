@@ -11,11 +11,6 @@ def register_blueprints(app):
     app.register_blueprint(create_maicai_bp(), url_prefix='/maicai')
 
 
-# def register_cli(app):
-#     from commands.mock import mock_cli
-#     app.cli.add_command(mock_cli)
-
-
 def apply_cors(app):
     CORS(app, resources={"/*": {"origins": "*"}})
 

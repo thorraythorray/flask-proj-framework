@@ -20,12 +20,12 @@ class RedisDBClient:
 redis_pool = RedisDBClient(ENV_CONF).redis
 
 
-msyql_db = sessionmaker(create_engine(  # pylint: disable=invalid-name
-    MYSQL_URI,
-    pool_recycle=3600,
-    pool_size=10,
-    isolation_level="READ COMMITTED",
-    poolclass=QueuePool,
-))
-
-db_session = msyql_db()
+def get_mysql_session():
+    msyql_db = sessionmaker(create_engine(  # pylint: disable=invalid-name
+        MYSQL_URI,
+        pool_recycle=3600,
+        pool_size=10,
+        isolation_level="READ COMMITTED",
+        poolclass=QueuePool,
+    ))
+    return msyql_db()
