@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import QueuePool
 from redis import Redis
 
-from etc.config import MYSQL_URI, ENV_CONF
+from etc.globals import MYSQL_URI, ENV_CONF
 from utils.singleton import singleton
 
 

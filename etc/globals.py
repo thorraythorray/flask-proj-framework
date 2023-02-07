@@ -3,6 +3,7 @@ from dotenv import dotenv_values
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 class EnvConf(dict):
     instance = None
 
@@ -17,7 +18,9 @@ class EnvConf(dict):
         for k, v in confs.items():
             self[k] = v
 
+
 ENV_CONF = EnvConf()
+
 ENV = ENV_CONF.get("FLASK_ENV")
 
 MYSQL_URI = 'mysql+mysqldb://{}:{}@{}:{}/{}?charset=utf8mb4'.format(

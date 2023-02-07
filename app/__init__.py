@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate, MigrateCommand
 
-from etc.config import ENV_CONF, MYSQL_URI
+from etc.globals import ENV_CONF, MYSQL_URI
 from app.db import db
 
 

@@ -4,7 +4,7 @@ import logging.config
 
 import yaml
 
-from etc.config import ROOT, ENV
+from etc.globals import ROOT, ENV
 
 
 def init_log():
