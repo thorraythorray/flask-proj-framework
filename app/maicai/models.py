@@ -20,7 +20,7 @@ class Category(BaseModel):
 
 
 class Product(BaseModel):
-    cate_id = Column(Integer, ForeignKey(Category.id), index=True, nullable=False)
+    cate_id = Column(Integer, index=True, nullable=False)
     name = Column(VARCHAR(32), nullable=False)
     sell_price = Column(Float, nullable=False)
     orig_price = Column(Float, nullable=False)
@@ -31,6 +31,6 @@ class Product(BaseModel):
 
 
 class ProdImages(BaseModel):
-    prod_id = Column(Integer, ForeignKey(Product.id), index=True, nullable=False)
+    prod_id = Column(Integer, index=True, nullable=False)
     master = Column(Boolean, default=False)
     img_url = Column(VARCHAR(255))
