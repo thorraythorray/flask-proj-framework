@@ -33,6 +33,14 @@ def mock_init_data():
                 "sell_price": 1.2,
                 "orig_price": 2.2,
                 "stock": 99,
+            },
+            {
+                "id": 2,
+                "cate_id": 1,
+                "name": "商品2",
+                "sell_price": 1.2,
+                "orig_price": 2.2,
+                "stock": 99,
             }
         ],
         "prodimages": [
