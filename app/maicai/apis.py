@@ -2,7 +2,7 @@ from flask import Blueprint
 
 from app.exception import success
 from app.db import db, to_list
-from app.maicai.models import Product, Category
+from app.maicai.models import Product, Category, ProdImages
 from utils.log import logger
 
 bp = Blueprint("api", __name__)
@@ -27,7 +27,8 @@ def products():
     for i in prods:
         prod_info = i[0].dump()
         prod_info["cate_name"] = i[1]
-        prod_info["images"] = to_list(i[0].images)
+        images = ProdImages.query.filter_by(prod_id=i[0].id)
+        prod_info["images"] = to_list(images)
         res.append(prod_info)
     return success(data=res)
 

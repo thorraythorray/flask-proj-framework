@@ -44,7 +44,7 @@ class BaseModel(db.Model):
         data = {}
         for column in self.__table__.columns:
             value = getattr(self, column.name, None)
-            data[column] = value
+            data[column.name] = value
         return data
 
 
