@@ -4,3 +4,4 @@ __pycache__
 .svn
 .vscode
 migrations
+.DS_Store
