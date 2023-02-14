@@ -1,6 +1,5 @@
 # coding: utf-8
-from sqlalchemy import Column, Integer, VARCHAR, Text, Float, Boolean, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, VARCHAR, Text, Float, Boolean
 
 from app.db import BaseModel
 

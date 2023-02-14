@@ -37,3 +37,13 @@ def products():
 def cates():
     data = Category.query.all()
     return success(data=to_list(data))
+
+
+@bp.route("/banner/list", methods=["GET"])
+def banner_list():
+    banner_list = [
+      "https://cloud.thorray.com/temp/maicai/banner1.png",
+      "https://cloud.thorray.com/temp/maicai/banner2.png",
+      "https://cloud.thorray.com/temp/maicai/banner3.png"
+    ]
+    return success(data=banner_list)
