@@ -10,7 +10,7 @@ def create_maicai_bp():
     '''
     from app.maicai.apis import bp as api_bp
     maicai_bp = Blueprint("maicai", __name__)
-    maicai_bp.register_blueprint(api_bp, url_prefix="/api")
+    maicai_bp.register_blueprint(api_bp)
 
     from app.maicai.clis import cli_bp
     maicai_bp.register_blueprint(cli_bp)

@@ -3,33 +3,33 @@ from flask_cors import CORS
 from flask_migrate import Migrate, MigrateCommand
 
 from etc.globals import ENV_CONF, MYSQL_URI
-from app.db import db
 
 
-def register_blueprints(app):
+def register_blueprints(_app):
     from app.maicai import create_maicai_bp
-    app.register_blueprint(create_maicai_bp(), url_prefix='/maicai')
+    _app.register_blueprint(create_maicai_bp(), url_prefix='/mc')
 
 
-def apply_cors(app):
-    CORS(app, resources={"/*": {"origins": "*"}})
+def apply_cors(_app):
+    CORS(_app, resources={"/*": {"origins": "*"}})
 
 
-def apply_migrate(app):
-    db.init_app(app)
+def apply_migrate(_app):
+    from app.db import db
+    db.init_app(_app)
     migrate = Migrate()
-    migrate.init_app(app, db=db, command=MigrateCommand)
+    migrate.init_app(_app, db=db, command=MigrateCommand)
 
 
-def load_app_config(app):
-    app.config.update(ENV_CONF)
-    app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
+def load_app_config(_app):
+    _app.config.update(ENV_CONF)
+    _app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
 
 
 def create_app():
-    app = Flask(__name__)
-    load_app_config(app)
-    register_blueprints(app)
-    apply_migrate(app)
-    apply_cors(app)
-    return app
+    _app = Flask(__name__)
+    load_app_config(_app)
+    register_blueprints(_app)
+    apply_migrate(_app)
+    apply_cors(_app)
+    return _app
