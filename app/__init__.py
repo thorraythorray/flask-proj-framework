@@ -7,7 +7,7 @@ from etc.globals import ENV_CONF, MYSQL_URI
 
 def register_blueprints(_app):
     from app.maicai import create_maicai_bp
-    _app.register_blueprint(create_maicai_bp(), url_prefix='/mc')
+    _app.register_blueprint(create_maicai_bp(), url_prefix='/fla/mc')
 
 
 def apply_cors(_app):
