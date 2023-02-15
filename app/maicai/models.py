@@ -25,11 +25,6 @@ class Product(BaseModel):
     orig_price = Column(Float, nullable=False)
     stock = Column(Integer, nullable=False, default=0)
     status = Column(Integer, default=0)
-    desc = Column(Text)
-    #images = relationship("ProdImages", backref="prod", cascade="delete", primaryjoin='Product.id==ProdImages.cate_id')
-
-
-class ProdImages(BaseModel):
-    prod_id = Column(Integer, index=True, nullable=False)
-    master = Column(Boolean, default=False)
     img_url = Column(VARCHAR(255))
+    img_details = Column(Text)
+    desc = Column(Text)

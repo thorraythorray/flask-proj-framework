@@ -21,18 +21,47 @@ def mock_init_data():
         "category": [
             {
                 "id": 1,
-                "name": "分类1",
-                "img_url": "https://tse1-mm.cn.bing.net/th/id/OET.67f5a59611e34cf99a924e0e0a87791c?w=272&h=272&c=7&rs=1&o=5&dpr=1.1&pid=1.9"
-            }
+                "name": "水果",
+                "img_url": "https://pic4.zhimg.com/459a876ffd857b3f7aacbfe122716773_r.jpg"
+            },
+			{
+                "id": 2,
+                "name": "蔬菜",
+                "img_url": "https://img95.699pic.com/photo/50105/7941.jpg_wh860.jpg"
+            },
+			{
+                "id": 3,
+                "name": "玩具",
+                "img_url": "https://pic1.zhimg.com/v2-a1e7a862cf94277450869e14f0101e7b_b.jpg"
+            },
+			{
+                "id": 4,
+                "name": "零食",
+                "img_url": "https://img.zcool.cn/community/01b0265b21c5faa80121bbec68d3c2.jpg@1280w_1l_2o_100sh.jpg"
+            },
+			{
+                "id": 5,
+                "name": "饮品",
+                "img_url": "https://pic4.zhimg.com/v2-b8e5792b08f6a6c4a6635ea3a51c9e87_r.jpg"
+            },
+			{
+                "id": 5,
+                "name": "特色",
+                "img_url": "https://img.zcool.cn/community/01fc9d5a0419c9a801204a0eb3e069.jpg@1280w_1l_2o_100sh.jpg"
+            },
         ],
         "product": [
             {
                 "id": 1,
-                "cate_id": 1,
-                "name": "商品1",
+                "cate_id": 5,
+                "name": "牛奶",
                 "sell_price": 1.2,
                 "orig_price": 2.2,
                 "stock": 99,
+				"img_url": "https://img.alicdn.com/bao/uploaded/i2/6000000003953/O1CN01H3CEa41f4WSS0QiUK_!!6000000003953-0-picassoopen.jpg_160x160.jpg",
+				"img_details": '["https://img.alicdn.com/bao/uploaded/i2/6000000003953/O1CN01H3CEa41f4WSS0QiUK_!!6000000003953-0-picassoopen.jpg_160x160.jpg", \
+                    "https://img.alicdn.com/imgextra/i3/2200638584267/O1CN01Q8Gjf51hOKoHetOjr_!!2200638584267-0-scmitem6000.jpg", \
+                        "https://img.alicdn.com/imgextra/i4/2200638584267/O1CN01FkmNI11hOKoSp2SbY_!!2200638584267-0-scmitem6000.jpg"]'
             },
             {
                 "id": 2,
@@ -41,17 +70,6 @@ def mock_init_data():
                 "sell_price": 1.2,
                 "orig_price": 2.2,
                 "stock": 99,
-            }
-        ],
-        "prodimages": [
-            {
-                "prod_id": 1,
-                "img_url": "https://tse1-mm.cn.bing.net/th/id/OET.af47b77222b24dc4a251d7c73bb36f8f?w=135&h=272&c=7&rs=1&o=5&dpr=1.1&pid=1.9",
-                "master": True
-            },
-            {
-                "prod_id": 2,
-                "img_url": "https://tse1-mm.cn.bing.net/th/id/OET.46c0a9e770dc46f782902bd706ff1b34?w=135&h=135&c=7&rs=1&o=5&dpr=1.1&pid=1.9",
             }
         ]
     }
