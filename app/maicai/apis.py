@@ -1,8 +1,10 @@
+import json
+
 from flask import Blueprint
 
 from app.exception import success
 from app.db import db, to_list
-from app.maicai.models import Product, Category, ProdImages
+from app.maicai.models import Product, Category
 from utils.log import logger
 
 bp = Blueprint("api", __name__)
@@ -27,10 +29,13 @@ def products():
     for i in prods:
         prod_info = i[0].dump()
         prod_info["cate_name"] = i[1]
-        images = ProdImages.query.filter_by(prod_id=i[0].id)
-        prod_info["images"] = to_list(images)
-        res.append(prod_info)
     return success(data=res)
+
+
+@bp.route("/prod/<int:prod_id>", methods=["GET"])
+def product_detail(prod_id):
+    prod = Product.query.get(prod_id)
+    return success(data=prod.dump())
 
 
 @bp.route("/cates", methods=["GET"])
@@ -40,7 +45,7 @@ def cates():
 
 
 @bp.route("/banner/list", methods=["GET"])
-def banner_list():
+def banners():
     banner_list = [
       "https://cbu01.alicdn.com/img/ibank/2018/942/259/9113952249_1357572010.jpg",
       "https://img.zcool.cn/community/01cbe85c20c77fa8012029ac3c0e1c.jpg@1280w_1l_2o_100sh.jpg",

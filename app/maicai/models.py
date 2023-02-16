@@ -1,5 +1,7 @@
 # coding: utf-8
-from sqlalchemy import Column, Integer, VARCHAR, Text, Float, Boolean
+import json
+
+from sqlalchemy import Column, Integer, VARCHAR, Text, Float
 
 from app.db import BaseModel
 
@@ -28,3 +30,11 @@ class Product(BaseModel):
     img_url = Column(VARCHAR(255))
     img_details = Column(Text)
     desc = Column(Text)
+
+    def dump(self):
+        data = super().dump()
+        if self.img_details:
+            data["img_details"] = json.dumps(self.img_details)
+        else:
+            del data["img_details"]
+        return data
