@@ -5,4 +5,6 @@ __pycache__
 .vscode
 migrations
 .DS_Store
-maicai-mp
+maicai-mp.zip
+miniprogram_npm
+node_modules
