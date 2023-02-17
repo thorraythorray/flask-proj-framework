@@ -1,5 +1,3 @@
-import json
-
 from flask import Blueprint
 
 from app.exception import success
@@ -29,6 +27,7 @@ def products():
     for i in prods:
         prod_info = i[0].dump()
         prod_info["cate_name"] = i[1]
+        res.append(res)
     return success(data=res)
 
 
@@ -54,3 +53,43 @@ def banners():
       "https://img.zcool.cn/community/01c0115cee3ad8a80121a47058dadd.jpg@1280w_1l_2o_100sh.jpg"
     ]
     return success(data=banner_list)
+
+
+@bp.route("/areas/list", methods=["GET"])
+def areas():
+    area_list = [
+      {
+        "name": "河北省 / 秦皇岛市 / 山海关区",
+      },
+      {
+        "name": "广东省 / 珠海市 / 斗门区",
+      }
+    ]
+    return success(data=area_list)
+
+
+@bp.route("/broadcast", methods=["GET"])
+def broadcast():
+    return success(data='年终盛会最后狂欢年末最后一次')
+
+
+@bp.route("/sales", methods=["GET"])
+def sales():
+    prods = db.session.query(
+        Product, Category.name
+    ).join(
+        Category, Category.id == Product.cate_id
+    ).order_by(
+        Product.name
+    )
+    sell_list = []
+    for i in prods:
+        prod_info = i[0].dump()
+        prod_info["cate_name"] = i[1]
+        sell_list.append(prod_info)
+    res = {
+        "sell_list": sell_list,
+        "start_tm": "2023-02-20 00:00:00",
+        "end_tm": "2023-02-27 00:00:00",
+    }
+    return success(data=res)

@@ -11,13 +11,13 @@
       <view wx:for="{{list}}" wx:key="index" class="menu_item" data-id="{{ item.id }}" bind:tap="itemClick">
         <view class="menu_item_image">
           <view class="menu_item_image_content">
-            <my-image src="{{ item.url }}" lazy-load mode="aspectFit"></my-image>
+            <my-image src="{{ item.img_url }}" lazy-load mode="aspectFit"></my-image>
           </view>
         </view>
         <view class="menu_item_info">
           <view class="name-box">
             <view class="van-ellipsis name">{{ item.name }}</view>
-            <view class="van-ellipsis title">{{ item.specs }}</view>
+            <view class="van-ellipsis title">{{ item.desc }}</view>
             <!-- <view class="van-ellipsis"><text class="name">{{ item.name }}</text><text class="specs">{{ item.specs }}</text></view>
             <view class="van-ellipsis title">{{ item.title }}</view> -->
           </view>
@@ -25,14 +25,14 @@
           <view wx:if="{{ item.price }}" class="price">
             <text>¥</text>
             <view class="line-through">
-              <text>{{ price.pointBefore(item.price) }}</text>
-              <text wx:if="{{price.pointAfter(item.price)}}" class="small">.{{ price.pointAfter(item.price) }}</text>
+              <text>{{ price.pointBefore(item.orig_price) }}</text>
+              <text wx:if="{{price.pointAfter(item.orig_price)}}" class="small">.{{ price.pointAfter(item.orig_price) }}</text>
             </view>
           </view>
           <view class="rulingPrice">
             <text class="currency">¥</text>
-            <text>{{ price.pointBefore(item.salePrice) }}</text>
-            <text wx:if="{{price.pointAfter(item.salePrice)}}" class="small">.{{ price.pointAfter(item.salePrice) }}</text>
+            <text>{{ price.pointBefore(item.sell_price) }}</text>
+            <text wx:if="{{price.pointAfter(item.sell_price)}}" class="small">.{{ price.pointAfter(item.sell_price) }}</text>
           </view>
           <view class="cart" data-id="{{ item.id }}" catch:tap="cartClick">
             <add name="add" size="24" />

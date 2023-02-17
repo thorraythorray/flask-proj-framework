@@ -42,7 +42,7 @@
         <view class="grid-item-container" data-id="{{item.id}}" bind:tap="_switchClassify">
           <view class="grid-item_img">
             <view class="grid-item_img_content">
-              <my-image src="{{item.url}}" round mode="aspectFill"></my-image>
+              <my-image src="{{item.img_url}}" round mode="aspectFill"></my-image>
             </view>
           </view>
           <text>{{item.name}}</text>

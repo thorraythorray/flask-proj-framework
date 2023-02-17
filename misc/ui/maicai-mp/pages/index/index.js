@@ -6,86 +6,6 @@ import Toast from '@vant/weapp/toast/toast'
 const app = getApp()
 Page({
   data: {
-    // bannerList: [
-    //   "https://cloud.thorray.com/temp/maicai/banner1.png",
-    //   "https://cloud.thorray.com/temp/maicai/banner2.png",
-    //   "https://cloud.thorray.com/temp/maicai/banner3.png"
-    // ], // 顶部轮播图
-    // category: [
-    //   {
-    //     "id": 1,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg1.png",
-    //     "name": "甘蓝"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg2.png",
-    //     "name": "西红柿"
-    //   },
-    //   {
-    //     "id": 3,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg3.png",
-    //     "name": "辣椒"
-    //   },
-    //   {
-    //     "id": 4,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg4.png",
-    //     "name": "柠檬"
-    //   },
-    //   {
-    //     "id": 5,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg5.png",
-    //     "name": "黄瓜"
-    //   }
-    // ], // 分类
-    // list: [], // 推荐商品列表
-    // resultList: [
-    //   {
-    //     "moduleId": 1,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg5.png",
-    //     "name": "甘蓝"
-    //   },
-    //   {
-    //     "moduleId": 2,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg4.png",
-    //     "name": "西红柿"
-    //   },
-    //   {
-    //     "moduleId": 3,
-    //     "url": "https://cloud.thorray.com/temp/maicai/veg3.png",
-    //     "name": "辣椒"
-    //   },
-    // ], // 分类商品列表
-    // saleList: [
-    //   {
-    //     "id": 1,
-    //     "url": "https://cloud.thorray.com/temp/maicai/qiang1.png",
-    //     "name": "甘蓝",
-    //     "price": "2.5",
-    //     "salePrice": "2.1"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "url": "https://cloud.thorray.com/temp/maicai/qiang2.png",
-    //     "name": "苹果",
-    //     "price": "1.5",
-    //     "salePrice": "1.1"
-    //   },
-    //   {
-    //     "id": 3,
-    //     "url": "https://cloud.thorray.com/temp/maicai/qiang3.png",
-    //     "name": "洋葱",
-    //     "price": "0.5",
-    //     "salePrice": "0.1"
-    //   },
-    //   {
-    //     "id": 4,
-    //     "url": "https://cloud.thorray.com/temp/maicai/qiang1.png",
-    //     "name": "豆角",
-    //     "price": "3.5",
-    //     "salePrice": "2.1"
-    //   }
-    // ],
     countTime: {
       calendar: '', // 相对时间
       duration: '' // 限时抢购倒计时
@@ -103,32 +23,30 @@ Page({
     try {
       // 获取轮播图 分类 推荐商品
       const [
-        { data: { list: bannerList } },
+        { data: bannerList },
         { data: category },
-        // { data: { list: areaList } },
-        // { data: { list: saleList, startTime, endTime } },
-        // { data }
+        { data: areaList },
+        { data: { sell_list: saleList, start_tm: startTime, end_tm: endTime} },
+        { data }
       ] = await Promise.all([
         getBanner(), // 轮播图
         getHomeCategoryList(), // 分类
-        // getAreasList(), // 区域列表
-        // getIndexFlashSale(), // 限时抢购
-        // addRadio(), // 首页广播
-        // // this._getList()
-        // this._getModuleList()
+        getAreasList(), // 区域列表
+        getIndexFlashSale(), // 限时抢购
+        addRadio(), // 首页广播
       ])
       this.setData({
-        // "bannerList": this.data.bannerList,
         bannerList,
         category,
-        // areaList: [{ id: null, name: '目前已开放配送范围' }, ...areaList],
-        // saleList: saleList || [],
-        // countTime: timeData(startTime, endTime),
-        // radioText: data ? data.join(' ') : ''
+        areaList: [{ id: null, name: '目前已开放配送范围' }, ...areaList],
+        saleList: saleList || [],
+        countTime: timeData(startTime, endTime),
+        radioText: data ? data.join(' ') : ''
       })
     } catch(err) {
       console.log("index err", err)
     }
+    // this._getModuleList()
     // app.getUserInfo((err, res) => {
     //   // console.log(err, res)
     //   if (!err) {
@@ -148,13 +66,14 @@ Page({
     //   }
     // })
   },
-  // onReady () {
-  //   // 获取topbar高度
-  //   wx.createSelectorQuery().in(this).select('.topbar').boundingClientRect(rect => {
-  //     const { bottom: top } = rect
-  //     this.observerContentScroll(-top)
-  //   }).exec()
-  // },
+  onReady () {
+    // 获取topbar高度
+    wx.createSelectorQuery().in(this).select('.topbar').boundingClientRect(rect => {
+      const { bottom: top } = rect
+      this.observerContentScroll(-top)
+    }).exec()
+  },
+
   onShow () {
     if (parseInt(app.globalData.cartCount)) {
       wx.setTabBarBadge({
