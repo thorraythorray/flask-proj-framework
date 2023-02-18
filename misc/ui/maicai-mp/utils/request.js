@@ -42,7 +42,6 @@ function request (url, data = {}, header = {}, method = "POST", config = {}) {
   let showToast = true,
     showLoading = false,
     loadingTitle = '加载中...'
-  console.log(config)
   // 默认显示toast
   if (config) {
     if (config['showToast'] !== undefined && config['showToast'] === false) {
@@ -69,7 +68,6 @@ function request (url, data = {}, header = {}, method = "POST", config = {}) {
       header: _header,
       method: method,
       success: ({ cookies, data, errMsg, header, statusCode }) => {
-        console.log(statusCode, data)
         // 服务器 非200 错误
         if (statusCode && statusCode !== 200) {
           wx.showToast({ title: '服务器 ' + statusCode + ' 错误', icon: 'none' })
@@ -77,15 +75,15 @@ function request (url, data = {}, header = {}, method = "POST", config = {}) {
           return
         }
 
-        if (data && data.code !== 0) {
-          // 业务状态非0 是否提示
-          if (showToast) {
-            wx.showToast({ title: data.msg, icon: 'none' })
-          }
-
-          reject(data)
-          return
-        }
+        // if (data && data.code !== 0) {
+        //   // 业务状态非0 是否提示
+        //   if (showToast) {
+        //     wx.showToast({ title: data.msg, icon: 'none' })
+        //   }
+        //   console.log(url, statusCode, data)
+        //   reject(data)
+        //   return
+        // }
         resolve(data)
       },
       fail: err => {
