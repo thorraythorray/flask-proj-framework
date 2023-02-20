@@ -149,7 +149,7 @@ page {
 }
 .count .calendar {
   font-size: 28rpx;
-  color: #3695e3;
+  color: #ff6666;
 }
 
 .recommend-box .recommend {

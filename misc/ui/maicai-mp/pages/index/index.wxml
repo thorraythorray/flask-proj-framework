@@ -1,6 +1,6 @@
 <!-- index.wxml -->
 <view class="bg-container">
-  <image src="../../assets/iindex_bg.jpeg" class="bg" />
+  <!-- <image src="../../assets/iindex_bg.jpeg" class="bg" /> -->
 
 <!-- class="topbar {{ topbarStyle? 'van-hairline--bottom': '' }}" style="background-color: {{ topbarStyle }}" -->
   <view class="topbar">
@@ -32,11 +32,11 @@
     <van-notice-bar
       left-icon="volume-o"
       backgroundColor="#edf9ff"
-      color="#3695e3"
+      color="#ff6666"
       text="{{ radioText }}"
     />
   </view>
-  <view class="grid">
+  <view class="grid" style="background-color: #fff;">
     <view class="grid-container">
       <block wx:for="{{ category }}" wx:key="index">
         <view class="grid-item-container" data-id="{{item.id}}" bind:tap="_switchClassify">

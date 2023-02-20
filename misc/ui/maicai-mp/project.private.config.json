@@ -3,5 +3,6 @@
   "projectname": "maicai-mp",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "2.16.1"
 }

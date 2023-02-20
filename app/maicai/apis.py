@@ -46,7 +46,6 @@ def cates():
 @bp.route("/banner/list", methods=["GET"])
 def banners():
     banner_list = [
-      "https://cbu01.alicdn.com/img/ibank/2018/942/259/9113952249_1357572010.jpg",
       "https://img.zcool.cn/community/01cbe85c20c77fa8012029ac3c0e1c.jpg@1280w_1l_2o_100sh.jpg",
       "https://img.zcool.cn/community/014d3556de68de6ac72531cb2cfa4e.jpg@1280w_1l_2o_100sh.jpg",
       "https://img.zcool.cn/community/0130255779db830000018c1b4d5b69.jpg@2o.jpg",
