@@ -27,13 +27,15 @@ Page({
         { data: category },
         { data: areaList },
         { data: { sell_list: saleList, start_tm: startTime, end_tm: endTime} },
-        { data }
+        { data },
+        { data: index_prod_list },
       ] = await Promise.all([
         getBanner(), // 轮播图
         getHomeCategoryList(), // 分类
         getAreasList(), // 区域列表
         getIndexFlashSale(), // 限时抢购
         addRadio(), // 首页广播
+        getIndexModuleProductList(),
       ])
       this.setData({
         bannerList,
@@ -41,7 +43,8 @@ Page({
         areaList: [{ id: null, name: '目前已开放配送范围' }, ...areaList],
         saleList: saleList || [],
         countTime: timeData(startTime, endTime),
-        radioText: data ? data.join(' ') : ''
+        radioText: data ? data.join(' ') : '',
+        resultList: index_prod_list
       })
     } catch(err) {
       console.log("index err", err)
@@ -103,26 +106,26 @@ Page({
     // })
     // this.setData({ resultList: this.data.resultList })
 
-    app.getUserInfo((err, res) => {
-      // console.log(err, res)
-      if(!err) {
-        if (res.mobile) {
-          if (this.data.showLoginBtn) {
-            this.setData({
-              showLoginBtn: false
-            })
-          }
-        } else {
-          this.setData({
-            showLoginBtn: true
-          })
-        }
-      } else {
-        this.setData({
-          showLoginBtn: true
-        })
-      }
-    })
+    // app.getUserInfo((err, res) => {
+    //   // console.log(err, res)
+    //   if(!err) {
+    //     if (res.mobile) {
+    //       if (this.data.showLoginBtn) {
+    //         this.setData({
+    //           showLoginBtn: false
+    //         })
+    //       }
+    //     } else {
+    //       this.setData({
+    //         showLoginBtn: true
+    //       })
+    //     }
+    //   } else {
+    //     this.setData({
+    //       showLoginBtn: true
+    //     })
+    //   }
+    // })
   },
   // observerContentScroll (top) {
   //   this.createIntersectionObserver().disconnect()

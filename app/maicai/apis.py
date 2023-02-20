@@ -59,10 +59,10 @@ def banners():
 def areas():
     area_list = [
       {
-        "name": "河北省 / 秦皇岛市 / 山海关区",
+        "name": "云南省昆明市昆明市五华区一二一大街298号云南师范大学",
       },
       {
-        "name": "广东省 / 珠海市 / 斗门区",
+        "name": "杭州市余杭塘路2318号杭州师范大学仓前校区",
       }
     ]
     return success(data=area_list)
