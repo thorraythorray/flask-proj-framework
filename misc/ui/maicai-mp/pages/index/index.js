@@ -20,7 +20,7 @@ Page({
     showLoginBtn: true // 底部登录提示
   },
   async onLoad () {
-    try {
+    // try {
       // 获取轮播图 分类 推荐商品
       const [
         { data: bannerList },
@@ -39,16 +39,16 @@ Page({
       ])
       this.setData({
         bannerList,
-        category,
+        category: category,
         areaList: [{ id: null, name: '目前已开放配送范围' }, ...areaList],
         saleList: saleList || [],
         countTime: timeData(startTime, endTime),
-        radioText: data ? data.join(' ') : '',
+        radioText: data || '',
         resultList: index_prod_list
       })
-    } catch(err) {
-      console.log("index err", err)
-    }
+    // } catch(err) {
+    //   console.log("index err", err)
+    // }
     // this._getModuleList()
     // app.getUserInfo((err, res) => {
     //   // console.log(err, res)
@@ -127,17 +127,17 @@ Page({
     //   }
     // })
   },
-  // observerContentScroll (top) {
-  //   this.createIntersectionObserver().disconnect()
-  //   // 设置参考区域减去tobbar高度
-  //   // 收缩参照节点布局区域的边界
-  //   this.createIntersectionObserver().relativeToViewport({ top })
-  //     .observe('.swiper', ({ intersectionRect: { top: intersectionTop } }) => { // 相交区域的上边界坐标
-  //       this.setData({
-  //         topbarStyle: intersectionTop ? '' : '#fff'
-  //       })
-  //     })
-  // },
+  observerContentScroll (top) {
+    this.createIntersectionObserver().disconnect()
+    // 设置参考区域减去tobbar高度
+    // 收缩参照节点布局区域的边界
+    this.createIntersectionObserver().relativeToViewport({ top })
+      .observe('.swiper', ({ intersectionRect: { top: intersectionTop } }) => { // 相交区域的上边界坐标
+        this.setData({
+          topbarStyle: intersectionTop ? '' : '#fff'
+        })
+      })
+  },
   _pickerChange ({ detail: { value } }) {
     // console.log(value)
     this.setData({ areaIndex: value })
