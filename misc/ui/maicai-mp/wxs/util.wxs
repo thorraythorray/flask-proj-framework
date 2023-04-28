@@ -1,8 +1,0 @@
-function validImgType(str){
-  var reg = getRegExp('\.(gif|jpg|jpeg|png|svg|GIF|JPG|PNG|SVG)$')
-  return reg.test(str)
-}
-
-module.exports = {
-  validImgType: validImgType
-}

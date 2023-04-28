@@ -55,7 +55,7 @@ def to_dict(model, excludes=None, includes=None):
     if excludes:
         columns -= set(c for c in excludes)
     if includes:
-        columns |= set(c for c in includes)
+        columns = set(c for c in includes)
     data = {}
     for column in columns:
         value = getattr(model, column, None)

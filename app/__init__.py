@@ -6,8 +6,8 @@ from etc.globals import ENV_CONF, MYSQL_URI
 
 
 def register_blueprints(_app):
-    from app.maicai import create_maicai_bp
-    _app.register_blueprint(create_maicai_bp(), url_prefix='/fla/mc')
+    from app.mc import create_bp as mc_bp
+    _app.register_blueprint(mc_bp(), url_prefix='/mc')
 
 
 def apply_cors(_app):
@@ -21,15 +21,18 @@ def apply_migrate(_app):
     migrate.init_app(_app, db=db, command=MigrateCommand)
 
 
-def load_app_config(_app):
+def _load_app_config(_app):
     _app.config.update(ENV_CONF)
     _app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
 
 
 def create_app():
     _app = Flask(__name__)
-    load_app_config(_app)
+    _load_app_config(_app)
     register_blueprints(_app)
     apply_migrate(_app)
     apply_cors(_app)
+    # 注册cli
+    from manager import manager_cli
+    _app.cli.add_command(manager_cli)
     return _app

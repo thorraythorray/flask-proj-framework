@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "mp-slideview": "weui-miniprogram/slideview/slideview",
-    "my-image": "/components/my-image/index",
-    "van-button": "@vant/weapp/button/index"
-  }
-}

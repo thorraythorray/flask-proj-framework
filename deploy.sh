@@ -12,6 +12,6 @@ if [ ! -d $LOG_PATH ]; then
 fi
 
 apt-get install python3-dev default-libmysqlclient-dev build-essential supervisor
-cp ./misc/config/supervisor_pyfla.conf /etc/supervisor/conf.d/
+cp ./ci/supervisor_pyfla.conf /etc/supervisor/conf.d/
 supervisorctl reload
 docker compose -f ./docker-compose.yml up -d

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "常见问题",
-  "usingComponents": {
-    "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "@vant/weapp/cell-group/index"
-  }
-}
