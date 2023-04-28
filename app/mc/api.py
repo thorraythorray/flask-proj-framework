@@ -1,9 +1,9 @@
 from flask import Blueprint
 
 from app.exception import success
-from app.db import db, to_list
+from app.orm_db import db, to_list
 from app.mc.models import Product, Category
-from utils.log import logger
+from common.log import logger
 
 bp = Blueprint("api", __name__)
 

@@ -14,7 +14,7 @@ class EnvConf(dict):
 
     def __init__(self, defaults=None):
         dict.__init__(self, defaults or {})
-        confs = dotenv_values(".env")
+        confs = dotenv_values(".flask_env")
         for k, v in confs.items():
             self[k] = v
 

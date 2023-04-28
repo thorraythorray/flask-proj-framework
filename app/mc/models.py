@@ -3,7 +3,7 @@ import json
 
 from sqlalchemy import Column, Integer, VARCHAR, Text, Float
 
-from app.db import BaseModel
+from app.orm_db import BaseModel
 
 
 PROD_STATUS = (

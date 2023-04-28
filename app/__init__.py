@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate, MigrateCommand
 
-from etc.globals import ENV_CONF, MYSQL_URI
+from etc.env import ENV_CONF, MYSQL_URI
 
 
 def register_blueprints(_app):
@@ -15,7 +15,7 @@ def apply_cors(_app):
 
 
 def apply_migrate(_app):
-    from app.db import db
+    from app.orm_db import db
     db.init_app(_app)
     migrate = Migrate()
     migrate.init_app(_app, db=db, command=MigrateCommand)

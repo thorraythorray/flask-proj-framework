@@ -1,22 +1,10 @@
 
 import copy
-import click
 
-from flask import Blueprint
-
-from app.db import db
+from app.orm_db import db
 from app.mc import models as m
 
-cli = Blueprint("cli", __name__, cli_group="mc")
 
-
-@cli.cli.command("test")
-@click.argument('name')
-def test_cli(name):
-    print(name)
-
-
-@cli.cli.command("mock")
 def mock_init_data():
     mock_data = {
         "category": [
