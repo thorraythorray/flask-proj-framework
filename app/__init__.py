@@ -2,7 +2,8 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate, MigrateCommand
 
-from etc.env import ENV_CONF, MYSQL_URI
+from etc.config import SQLALCHEMY_DATABASE_URI
+from manager import manager_cli
 
 
 def register_blueprints(_app):
@@ -22,17 +23,20 @@ def apply_migrate(_app):
 
 
 def _load_app_config(_app):
-    _app.config.update(ENV_CONF)
-    _app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
+    _app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
 
 def create_app():
     _app = Flask(__name__)
     _load_app_config(_app)
+
+    # 注册蓝图
     register_blueprints(_app)
+
+    # 注册app
     apply_migrate(_app)
     apply_cors(_app)
+
     # 注册cli
-    from manager import manager_cli
     _app.cli.add_command(manager_cli)
     return _app

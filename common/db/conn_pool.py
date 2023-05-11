@@ -3,8 +3,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import QueuePool
 from redis import Redis
 
-from etc.env import MYSQL_URI, ENV_CONF
-from common.singleton import singleton
+from etc.config import envconf, SQLALCHEMY_DATABASE_URI
+from util.singleton import singleton
 
 
 @singleton
@@ -17,15 +17,17 @@ class RedisDBClient:
         self.redis_db = params.get("REDIS_DB", 1)
         self.redis = Redis.from_url(f"redis://:{self.password}@{self.host}:{self.port}/{self.redis_db}")  # pylint: disable=syntax-error
 
-redis_pool = RedisDBClient(ENV_CONF).redis
+redis_pool = RedisDBClient(envconf).redis
 
 
 def get_mysql_session():
-    msyql_db = sessionmaker(create_engine(  # pylint: disable=invalid-name
-        MYSQL_URI,
+    return sessionmaker(create_engine(  # pylint: disable=invalid-name
+        SQLALCHEMY_DATABASE_URI,
         pool_recycle=3600,
         pool_size=10,
         isolation_level="READ COMMITTED",
         poolclass=QueuePool,
     ))
-    return msyql_db()
+
+
+mysql_session = get_mysql_session()

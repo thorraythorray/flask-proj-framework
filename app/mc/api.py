@@ -3,7 +3,7 @@ from flask import Blueprint
 from app.exception import success
 from app.orm_db import db, to_list
 from app.mc.models import Product, Category
-from common.log import logger
+from log import logger
 
 bp = Blueprint("api", __name__)
 

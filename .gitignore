@@ -8,3 +8,4 @@ migrations
 maicai-mp.zip
 miniprogram_npm
 node_modules
+.flaskenv

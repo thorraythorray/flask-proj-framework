@@ -1,22 +1,38 @@
-{"files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/*.pyc": true,
-    "**/.DS_Store": true,
-    "**/.vscode": true,
-    "**/__pycache__": true,
-    "**/.empty": true
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/*.pyc": true,
+        "**/.DS_Store": true,
+        "**/.vscode": true,
+        "**/__pycache__": true,
+        "**/.empty": true
     },
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pylintArgs":[
         "--disable=no-name-in-module","--disable=import-error",
-        "--disable=unused-import","--disable=unused-argument","--disable=missing-docstring",
-        "--disable=unused-variable","--disable=wrong-import-order","--disable=ungrouped-imports",
+        "--disable=unused-argument","--disable=missing-docstring",
+        "--disable=unused-variable","--disable=wrong-import-order",
         "--load-plugins",
     ],
-    "yaml.schemaStore.enable": false,
-    "python.linting.pylintPath": "D:\\Program Files\\miniconda\\envs\\pyfla\\Scripts\\pylint",
-    "svn.ignoreMissingSvnWarning": true
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "python.analysis.typeCheckingMode": "off",
+    "fileheader.customMade": {
+        "Author": "leidong",
+        "Date": "Do not edit",
+        "LastEditors": "git config user.name && git config user.email",
+        "LastEditTime": "Do not edit",
+        "Description": "",
+    },
+    "python.formatting.provider": "none",
+    "fileheader.cursorMode": {
+        "description": "",
+        "param": "",
+        "return": ""
+    },
+    "fileheader.configObj": {
+        "autoAdd": false
+    }
 }
